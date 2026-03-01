@@ -20,10 +20,7 @@ public class OrderController {
     }
     @PostMapping
     public ResponseEntity<Order> createOrder(@RequestBody CreateOrderRequest request) {
-        Order order = orderService.createOrder(
-                request.getUserId(),
-                request.getTotal()
-        );
+        Order order = orderService.createOrder(request, java.math.BigDecimal.ZERO);
         return ResponseEntity.ok(order);
     }
 

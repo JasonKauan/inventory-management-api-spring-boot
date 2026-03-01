@@ -3,6 +3,7 @@ package com.projeto.pizzaria.demo.entity;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 
@@ -26,14 +27,13 @@ public class OrderItem {
 
 
     private Integer quantity;
-    private Double price;
+    private BigDecimal price;
 
 
 
 
 
     public OrderItem() {
-        this.order = order;
     }
 
     public Order getOrder() {
@@ -60,11 +60,25 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
-    public Double getPrice() {
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
+        public BigDecimal getTotalPrice() {
+            return price.multiply(BigDecimal.valueOf(quantity));
+        }
+
+        public void setTotalPrice(BigDecimal totalPrice) {
+        }
 }

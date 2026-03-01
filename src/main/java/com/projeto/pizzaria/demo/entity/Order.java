@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -42,6 +43,14 @@ public class Order {
     public void removeItem(OrderItem item) {
         items.remove(item);
         item.setOrder(null);
+    }
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<OrderItem> items) {
+        this.items = items;
     }
 
     // Constructors
@@ -96,6 +105,14 @@ public class Order {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public void calculateTotal() {
+        if (items == null || items.isEmpty()) {
+            this.total = BigDecimal.ZERO;
+            return;
+        }
+
     }
 
 }

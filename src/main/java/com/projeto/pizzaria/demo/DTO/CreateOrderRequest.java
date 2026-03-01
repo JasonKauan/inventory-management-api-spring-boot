@@ -1,27 +1,28 @@
 package com.projeto.pizzaria.demo.DTO;
 
-import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 
 public class CreateOrderRequest {
+
+
     private UUID userId;
-    private BigDecimal total;
+
+
+    private List<OrderItemRequest> items;
 
     // Getters and Setters
 
+
+    public List<OrderItemRequest> getItems() {
+        return items;
+    }
+
+    public void setItems(List<OrderItemRequest> items) {
+        this.items = items;
+    }
+
     public UUID getUserId() {
         return userId;
-    }
-
-    public void setUserId(UUID userId) {
-        this.userId = userId;
-    }
-
-    public BigDecimal getTotal() {
-        return total;
-    }
-
-    public void setTotal(BigDecimal total) {
-        this.total = total;
     }
 }
