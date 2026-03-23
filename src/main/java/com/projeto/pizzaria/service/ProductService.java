@@ -1,6 +1,7 @@
 package com.projeto.pizzaria.service;
 
 
+import com.projeto.pizzaria.DTO.ProductDTO;
 import com.projeto.pizzaria.entities.Product;
 import com.projeto.pizzaria.repository.ProductRepository;
 import jakarta.transaction.Transactional;
@@ -15,6 +16,7 @@ public class ProductService {
 
     @Autowired
     private ProductRepository repository;
+    private ProductDTO productDTO;
 
     //find al products
     public List<Product> findAllProducts(){
@@ -41,9 +43,9 @@ public class ProductService {
     @Transactional
     public Product updateProduct(UUID id ,Product product){
         Product existingProduct = repository.findById(id).orElseThrow(()-> new RuntimeException("Product not found"));
-        existingProduct.setName(product.getName());
-        existingProduct.setDescription(product.getDescription());
-        existingProduct.setPrice(product.getPrice());
+        existingProduct.setName(productDTO.getName());
+        existingProduct.setDescription(productDTO.getDescription());
+        existingProduct.setPrice(productDTO.getPrice());
         return repository.save(existingProduct);
     }
     //update partial product
